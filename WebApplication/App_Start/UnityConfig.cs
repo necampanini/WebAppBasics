@@ -16,7 +16,7 @@ namespace WebApplication
         private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
-            
+
             RegisterTypes(container);
             
             //since we using both web api and mvc
