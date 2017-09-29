@@ -1,0 +1,13 @@
+﻿@model Models.Auth.RegistrationModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Auth", FormMethod.Post))
+{
+    @Html.EditorForModel()
+    
+    <button type="submit">REGISTER</button>    
+}
