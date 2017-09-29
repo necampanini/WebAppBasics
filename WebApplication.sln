@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{C2F1B65F-9EA0-4615-96F4-56E3D6BCF32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecTester", "SecTester\SecTester.csproj", "{33A44E98-CFAB-4CDF-BB42-165206CDC14B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,10 +47,6 @@ Global
 		{C2F1B65F-9EA0-4615-96F4-56E3D6BCF32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2F1B65F-9EA0-4615-96F4-56E3D6BCF32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2F1B65F-9EA0-4615-96F4-56E3D6BCF32B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33A44E98-CFAB-4CDF-BB42-165206CDC14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33A44E98-CFAB-4CDF-BB42-165206CDC14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33A44E98-CFAB-4CDF-BB42-165206CDC14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33A44E98-CFAB-4CDF-BB42-165206CDC14B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
