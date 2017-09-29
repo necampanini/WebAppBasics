@@ -1,0 +1,13 @@
+9/29/2017:
+
+Learned a lot about implementing hashing for passwords. Probably just the barebone
+basics, but lot of fun. More importantly, I created an orphan branch (no history)
+off original master to obscure any possibility of having sensitive information 
+being pushed up.
+
+Rider IDE was able to handle all the assembly swapping and hard git resets 
+to accomplish this. The only hiccup was having several assembly references
+not be correctly referenced. Workaround: remove a broken assembly via 
+Rider's NuGet manager, and re-add it. Clean/build and solution was okie dokie.
+
+Just wanted to get these thoughts down while it's fresh.
