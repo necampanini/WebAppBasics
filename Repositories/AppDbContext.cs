@@ -10,7 +10,7 @@ namespace Repositories
             Database.SetInitializer<AppDbContext>(null);
         }
 
-        public AppDbContext()
+        public AppDbContext() : base("Name=WebApplicationDb")
         {
         }
 

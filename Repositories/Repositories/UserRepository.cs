@@ -21,7 +21,7 @@ namespace Repositories.Repositories
 
             return await _appDbContext.Users
                 .Where(x => x.Email == email)
-                .FirstOrDefaultAsync();
+                .SingleOrDefaultAsync();
         }
 
         public async Task<int> InsertUser(User user)

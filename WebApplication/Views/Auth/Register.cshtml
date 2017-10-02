@@ -7,6 +7,8 @@
 
 @using (Html.BeginForm("Register", "Auth", FormMethod.Post))
 {
+    @Html.ValidationSummary(true)
+    
     @Html.EditorForModel()
     
     <button type="submit">REGISTER</button>    

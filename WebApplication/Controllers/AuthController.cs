@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using WebApplication.Models;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using Contracts.Services;
 using Models.Auth;
+using Models.Entities;
 using Models.Enums;
 
 namespace WebApplication.Controllers
@@ -13,8 +13,6 @@ namespace WebApplication.Controllers
     {
         private readonly IAuthenticationServices _authenticationServices;
 
-        
-        
         public AuthController(IAuthenticationServices authenticationServices)
         {
             _authenticationServices = authenticationServices;
@@ -22,48 +20,43 @@ namespace WebApplication.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            var model = new LoginModel
-            {
-                ReturnUrl = returnUrl
-            };
-
-            return View(model);
+            return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginModel model)
+        public async Task<ActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (model.Email == "admin@admin.com" && model.Password == "123456")
+            var user = await _authenticationServices.LoginAttempt(model);
+
+            if (user != null)
             {
-                //otherwise we go get from db. populate claims
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, "Nick"),
-                    new Claim(ClaimTypes.Email, "necampanini@gmail.com"),
-                    new Claim(ClaimTypes.Country, "USA")
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Name, user.Email), //replace with whatever 
                 }, "ApplicationCookie");
-
-//                Request.GetOwinContext().Authentication.SignIn(identity);
-                var owinContet = Request.GetOwinContext();
-                var authManager = owinContet.Authentication;
+             
+                var owinContext = Request.GetOwinContext();
+                var authManager = owinContext.Authentication;
 
                 authManager.SignIn(identity);
-
-                return Redirect(GetRedirectUrl(model.ReturnUrl));
+                
+                return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError("", "Invalid email or password");
+            ModelState.AddModelError("LoginError", "Password and/or Username incorrect");
+            
             return View(model);
         }
-
+    
         public ActionResult Logout()
         {
             var owinContext = Request.GetOwinContext();

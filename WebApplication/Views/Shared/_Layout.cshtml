@@ -25,14 +25,23 @@
             }
             else
             {
-                @Html.ActionLink("Login", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
+                @Html.ActionLink("Login", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
             }
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="@Url.Action("Logout", "Auth")">Log out!</a>
-                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Log Out", "Logout", "Auth");
+                    </li>
+                }
+                else
+                {
+                    <li style="color: white;">
+                        Log in, bro
+                    </li>
+                }
             </ul>
         </div>
     </div>

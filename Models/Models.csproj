@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\LoginModel.cs" />
     <Compile Include="Auth\RegistrationModel.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\RegistrationStatus.cs" />
